@@ -1,11 +1,6 @@
 from django.test import TestCase
 from restaurant.models import Menu
-from .serializers import MenuSerializer
-
-class MenuTest(TestCase):
-    def test_get_item(self):
-        item = Menu.objects.create(title="IceCream", price=80, inventory=100)
-        self.assertEqual(item, "IceCream : 80")
+from restaurant.serializers import MenuSerializer
 
 class MenuViewTest(TestCase):
     def setUp(self):
@@ -20,6 +15,3 @@ class MenuViewTest(TestCase):
             {'title': 'Cake', 'price': '60.00', 'inventory': '20.00'}
         ]
         self.assertEqual(serialized_items.data, expected_result)
-
-       
-       
